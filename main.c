@@ -19,9 +19,16 @@ int main() {
   //print_matrix(edges);
   print_matrix(transform);
 
-  ident(transform);
+  add_point(transform, 5, 5, 5);
+  add_point(transform, 2, 1, 5);
+  add_point(transform, 6, 10, 1);
+  add_point(transform, 5, 5, 5);
+
+  add_points(transform, 0, 0, 1, 1, 2, 2);
+
+  //ident(transform);
   print_matrix(transform);
   
-  //free_matrix(transform);
+  free_matrix(transform);
   free_matrix(edges);
 }  
