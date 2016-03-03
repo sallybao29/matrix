@@ -20,25 +20,24 @@ int main() {
 
   clear_screen(s);
 
-  edges = new_matrix(4, 4);
+  edges = new_matrix(4, 20);
   transform = new_matrix(4, 4);
-
   /*
-  add_point(transform, 5, 5, 5);
-  add_point(transform, 2, 1, 5);
-  add_point(transform, 6, 10, 1);
-  add_point(transform, 5, 5, 5);
+  struct matrix* scale = make_scale(1, 2, 3);
+  struct matrix* translate = make_translate(1, 2, 3);
+
+  struct matrix* rotX = make_rotX(60);
+  struct matrix* rotY = make_rotY(60);
+  struct matrix* rotZ = make_rotZ(60);
   */
 
-  add_edge(edges, 100, 100, 50, 50, 2, 2);
-  //add_edge(edges, 200, 4, 5, 10, 43, 3);
-  //add_edge(edges, 75, 20, 11, 9, 2, 2);
+  add_edge(edges, 250, 0, 500, 250, 2, 2);
+  add_edge(edges, 500, 250, 250, 500, 43, 3);
+  add_edge(edges, 250, 500, 0, 250, 2, 2);
 
-  print_matrix(edges);
-  printf("\n");
-  scalar_mult(2, edges);
 
-  //ident(transform);
+  //matrix_mult(transform, edges);
+
   //print_matrix(transform);
   print_matrix(edges);
   //draw_lines(edges, s, c);
