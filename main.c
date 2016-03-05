@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #include "ml6.h"
 #include "display.h"
@@ -22,29 +23,22 @@ int main() {
 
   edges = new_matrix(4, 20);
   transform = new_matrix(4, 4);
-  /*
-  struct matrix* scale = make_scale(1, 2, 3);
-  struct matrix* translate = make_translate(1, 2, 3);
+ 
+  double i;
 
-  struct matrix* rotX = make_rotX(60);
-  struct matrix* rotY = make_rotY(60);
-  struct matrix* rotZ = make_rotZ(60);
-  */
+  for (i = 0; i < 2 * M_PI; i += M_PI / 3)
+  add_edge(edges, 0, 0, 0, 500, 500, 0);
+  //add_edge(edges, 500, 500, 0, 0, 500, 0);
+  //add_edge(edges, 0, 500, 0, 250, 0, 0);
 
-  add_edge(edges, 250, 0, 500, 250, 2, 2);
-  add_edge(edges, 500, 250, 250, 500, 43, 3);
-  add_edge(edges, 250, 500, 0, 250, 2, 2);
-
-
-  //matrix_mult(transform, edges);
 
   //print_matrix(transform);
-  print_matrix(edges);
-  //draw_lines(edges, s, c);
+  //print_matrix(edges);
+  draw_lines(edges, s, c);
   
   free_matrix(transform);
   free_matrix(edges);
 
-  //display(s);
-  //save_extension(s, "matrices.png");
+  display(s);
+  save_extension(s, "matrices.png");
 }  
