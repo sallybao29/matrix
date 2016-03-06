@@ -80,7 +80,7 @@ void print_matrix(struct matrix *m) {
   int i, j;
 
   for (i = 0; i < m -> rows; i++){
-    for (j = 0; j < m -> cols; j++){
+    for (j = 0; j < m -> lastcol; j++){
       printf("%f ", m -> m[i][j]);
     }
     printf("\n");
@@ -100,9 +100,9 @@ void ident(struct matrix *m) {
   for (i = 0; i < m -> rows; i++){
     for (j = 0; j < m -> cols; j++){
       if (j == count)
-	m -> m[i][j] = 1;
+				m -> m[i][j] = 1;
       else
-	m -> m[i][j] = 0;
+				m -> m[i][j] = 0;
     }
     count++;
   }
@@ -140,10 +140,10 @@ void matrix_mult(struct matrix *a, struct matrix *b) {
   for (i = 0; i < b -> rows; i++){
     for (j = 0; j < b -> cols; j++){
       tmp -> m[i][j] = 
-	a -> m[i][0] * b -> m[0][j] +
-	a -> m[i][1] * b -> m[1][j] +
-	a -> m[i][2] * b -> m[2][j] +
-	a -> m[i][3] * b -> m[3][j];
+				a -> m[i][0] * b -> m[0][j] +
+				a -> m[i][1] * b -> m[1][j] +
+				a -> m[i][2] * b -> m[2][j] +
+				a -> m[i][3] * b -> m[3][j];
     }
   }
   copy_matrix(tmp, b);
@@ -165,16 +165,17 @@ void copy_matrix(struct matrix *a, struct matrix *b) {
 
   for (r=0; r < a->rows; r++) 
     for (c=0; c < a->cols; c++)  
-      b->m[r][c] = a->m[r][c];  
+      b->m[r][c] = a->m[r][c];
+	//b -> lastcol = a -> lastcol;
 }
 
 /*======== struct matrix * make_translate() ==========
-Inputs:  int x
-         int y
-         int z 
-Returns: The translation matrix created using x, y and z 
-as the translation offsets.
-====================*/
+	Inputs:  int x
+	int y
+	int z 
+	Returns: The translation matrix created using x, y and z 
+	as the translation offsets.
+	====================*/
 struct matrix * make_translate(double x, double y, double z) {
   struct matrix* translate = new_matrix(4, 4);
   ident(translate);
